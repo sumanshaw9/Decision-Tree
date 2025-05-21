@@ -1,0 +1,113 @@
+1. What is a Decision Tree,and how does it work.
+
+A Decision Tree is a supervised machine learning algorithm used for classification and regression. It splits the dataset into subsets based on feature values, creating a tree-like model of decisions.
+    Internal nodes: decisions (feature-based)
+    Branches: outcomes of decisions
+    Leaf nodes: final predictions (class label or value).
+
+It works by:
+    Choosing the best feature and threshold to split the data.
+    Recursively splitting the data at each node.
+    Stopping when a condition is met (e.g., max depth, pure node).
+
+2. What are impurity measures in Decision Trees?
+
+Impurity measures evaluate how "mixed" or "impure" a node is:
+    Gini Impurity
+    Entropy (Information Gain)
+    Mean Squared Error (for regression)
+A lower impurity indicates a more homogenous (pure) node.
+
+3.  What is the mathematical formula for Gini Impurity.
+
+    Gini = 1 - sum(p_i^2),
+    where p_i is the probability of class i.
+
+4. What is the mathematical formula for Entropy.
+
+    Entropy= -sum(p_i * log2(p_i))
+    where p_i is the probability of class i.
+
+5. What is Information Gain, and how is it used in Decision Trees?
+
+    Information Gain (IG) measures the reduction in impurity from a split:
+    IG = Impurity(parent) - weighted impurity(children)
+    Used to select the best feature for splitting.
+
+6. What is the difference between Gini Impurity and Entropy.
+
+  Gini Impurity: Gini = 1 - sum(p_i^2)
+  Entropy: Entropy = -sum(p_i * log2(p_i))
+  Key Difference: Gini is faster to compute; Entropy is more sensitive to class imbalance.
+  Splits :	
+  Gini is Similar performance, Entropy is Slightly more sensitive to class imbalance.
+  Usage:
+  Gini is Default in scikit-learn, Entropy is Optional.
+
+7. What is the mathematical explanation behind Decision Trees?
+
+    A Decision Tree builds a model by minimizing impurity through greedy, recursive splits. At each step:
+        Compute impurity before and after a split.    
+        Calculate Information Gain.
+        Select the split with the highest gain.
+        Repeat recursively until a stopping condition is met.
+
+8. What is Pre-Pruning in Decision Trees?
+
+    Pre-pruning (a.k.a. early stopping) halts tree growth during training to prevent overfitting by setting constraints:
+    Max depth
+    Min samples per split or leaf
+    Max number of leaf nodes
+
+9. What is Post-Pruning in Decision Trees?
+
+    Post-pruning builds a full tree first, then prunes back unnecessary branches based on validation performance to reduce overfitting.
+    Methods:
+    Cost complexity pruning (used in CART)
+    Reduced error pruning.
+
+10. What is the difference between Pre-Pruning and Post-Pruning?
+
+    Feature	                          Pre-Pruning	                 Post-Pruning
+
+When Applied	                    During training	                 After full tree is built
+Purpose                     	Avoids overfitting early	         Simplifies model after overfitting
+Method	                         Uses hyperparameters	             Uses validation performance
+
+11. What is a Decision Tree Regressor?
+
+    A Decision Tree Regressor predicts continuous numeric values instead of class labels. It splits data by minimizing variance (Mean Squared Error) instead of      classification impurity.
+
+12. What are the advantages and disadvantages of Decision Trees. 
+
+    Advantages:
+    Easy to interpret
+    Handles both numerical and categorical features
+    No need for feature scaling
+    Can capture nonlinear relationships
+
+    Disadvantages:
+    Prone to overfitting
+    Sensitive to small data changes
+    Greedy splits may be suboptimal
+
+13. How does a Decision Tree handle missing values?
+
+    Decision Trees can:
+    Use surrogate splits: alternative features when primary one is missing
+    Skip instances with missing values (in some implementations)
+    Impute missing values before training (common workaround).
+
+14. How does a Decision Tree handle categorical features.
+
+    Many libraries (e.g., scikit-learn) require encoding (e.g., one-hot or label encoding).
+    Some frameworks (like LightGBM or CatBoost) handle them natively.
+
+15. What are some real-world applications of Decision Trees?
+
+   - Medical diagnosis 
+   - Credit scoring
+   - Fraud detection
+   - Customer churn prediction
+   - Marketing (target audience segmentation)
+   - Loan approval
